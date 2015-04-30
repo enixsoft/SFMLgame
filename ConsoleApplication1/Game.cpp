@@ -7,18 +7,19 @@
 
 void Game::Start(void)
 {
-	if (_gameState != Uninitialized)
+	if (Game::_gameState != Uninitialized)
 		return;
 
-	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Game!", sf::Style::Close);
-	    
-	PlayerPaddle *player1 = new PlayerPaddle();
-	  player1->Load("images/PlayerPaddle.png");
-	  player1->SetPosition((1024 / 2) - 45, 700);
-	  _gameObjectManager.Add("Paddle1", player1);
+	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Tanky!", sf::Style::Close);
+
+
+
+	PlayerPaddle *player = new PlayerPaddle();
+	  player->Load("images/PlayerPaddle.png");//obrazok na tank
+	  player->SetPosition((1024 / 2) - 45, 700);
+	  _gameObjectManager.Add("Player", player);//zmenit id
 		   
-    //test
-	//test2	   
+    
 	   _gameState = Game::ShowingSplash;
 
 	while (!IsExiting())
@@ -70,7 +71,6 @@ void Game::GameLoop()
 				if (currentEvent.type == sf::Event::KeyPressed)
 				{
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) ShowMenu();
-					//if(currentEvent.Key.Code == sf::Key::Escape) ShowMenu();
 				}
 			}
 			break;
@@ -97,8 +97,12 @@ void Game::ShowMenu()
     case MainMenu::Play:
 			_gameState = Game::Playing;
 			break;
+
 	}
+
 }
+
+
 
 // A quirk of C++, static member variables need to be instantiated outside of the class
 Game::GameState Game::_gameState = Uninitialized;

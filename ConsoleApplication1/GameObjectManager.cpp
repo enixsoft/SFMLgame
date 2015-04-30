@@ -56,12 +56,26 @@ void GameObjectManager::UpdateAll()
 {
 	std::map<std::string, VisibleGameObject*>::const_iterator itr =
 		_gameObjects.begin();
-	float timeDelta = Game::GetWindow().GetFrameTime();
+	float timeDelta = clock.restart().asSeconds();
 
 	while (itr != _gameObjects.end())
 	{
 		itr->second->Update(timeDelta);
 		itr++;
 	}
+
+
+	/*
+	
+	void GameObjectManager::UpdateAll()
+{
+ std::map<std::string,VisibleGameObject*>::const_iterator itr = _gameObjects.begin();
+ float timeDelta = clock.restart().asSeconds();
+
+ while(itr != _gameObjects.end())
+ {
+  itr->second->Update(timeDelta);
+	
+	*/
 
 }

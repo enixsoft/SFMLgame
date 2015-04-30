@@ -56,11 +56,11 @@ void PlayerPaddle::Update(float elapsedTime)
 
 	sf::Vector2f pos = this->GetPosition();
 
-	if (pos.x  < GetSprite().getLocalBounds().x / 2
-		|| pos.x >(Game::SCREEN_WIDTH - GetSprite().getLocalBounds().width / 2))
+	if (pos.x  < GetSprite().getLocalBounds().height / 2
+		|| pos.x >(Game::SCREEN_WIDTH- GetSprite().getLocalBounds().width / 2))
 	{
 		_velocity = -_velocity; // Bounce by current velocity in opposite direction
 	}
 
-	GetSprite().Move(_velocity * elapsedTime, 0);
+	GetSprite().move(_velocity * elapsedTime, 0);
 }

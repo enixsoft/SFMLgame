@@ -17,7 +17,7 @@ public:
 
 private:
 	std::map<std::string, VisibleGameObject*> _gameObjects;
-
+	sf::Clock clock;
 	struct GameObjectDeallocator
 	{
 		void operator()(const std::pair<std::string, VisibleGameObject*> & p) const
