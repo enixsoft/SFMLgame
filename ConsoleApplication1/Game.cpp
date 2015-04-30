@@ -17,7 +17,7 @@ void Game::Start(void)
 	  player1->SetPosition((1024 / 2) - 45, 700);
 	  _gameObjectManager.Add("Paddle1", player1);
 		   
-    
+    //test
 		   
 	   _gameState = Game::ShowingSplash;
 
