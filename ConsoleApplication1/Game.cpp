@@ -3,7 +3,6 @@
 #include "SplashScreen.h"
 #include "MainMenu.h"
 #include "PlayerPaddle.h"
-#include "Gameball.h"
 
 void Game::Start(void)
 {
