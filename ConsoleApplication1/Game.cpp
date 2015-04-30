@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "SplashScreen.h"
 #include "MainMenu.h"
-#include "PlayerPaddle.h"
+#include "PlayerTank.h"
 
 void Game::Start(void)
 {
@@ -13,10 +13,10 @@ void Game::Start(void)
 
 
 
-	PlayerPaddle *player = new PlayerPaddle();
+	PlayerTank *player = new PlayerTank();
 	  player->Load("images/PlayerPaddle.png");//obrazok na tank
 	  player->SetPosition((1024 / 2) - 45, 700);
-	  _gameObjectManager.Add("Player", player);//zmenit id
+	  _gameObjectManager.Add("Player", player);
 		   
     
 	   _gameState = Game::ShowingSplash;
@@ -59,6 +59,7 @@ void Game::GameLoop()
 			while (_mainWindow.pollEvent(currentEvent))
 			{
 				_mainWindow.clear(sf::Color(0, 0, 0));
+				_gameObjectManager.UpdateAll();
 				_gameObjectManager.DrawAll(_mainWindow);
 				_mainWindow.display();
 

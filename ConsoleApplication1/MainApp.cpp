@@ -3,10 +3,12 @@
 
 #include "stdafx.h"
 #include "Game.h"
-#include <SFML/Graphics.hpp>
+#include <Windows.h>
 
 int main(int argc, _TCHAR* argv[])
 {
+	OutputDebugStringW(L"My output string.\n");
+	std::cout << "main test" << std::endl;
 	Game::Start();
 	//hey
 

@@ -1,13 +1,13 @@
 #include "StdAfx.h"
-#include "PlayerPaddle.h"
+#include "PlayerTank.h"
 #include "Game.h"
+#include "Windows.h"
 
-
-PlayerPaddle::PlayerPaddle() :
+PlayerTank::PlayerTank():
 _velocity(0),
 _maxVelocity(600.0f)
-
 {
+
 	Load("images/PlayerPaddle.png");
 	assert(IsLoaded());
 
@@ -16,23 +16,26 @@ _maxVelocity(600.0f)
 }
 
 
-PlayerPaddle::~PlayerPaddle()
+PlayerTank::~PlayerTank()
 {
 }
 
-void PlayerPaddle::Draw(sf::RenderWindow & rw)
+void PlayerTank::Draw(sf::RenderWindow & rw)
 {
+	OutputDebugStringW(L"Draw\n");
 	VisibleGameObject::Draw(rw);
 }
 
-float PlayerPaddle::GetVelocity() const
+float PlayerTank::GetVelocity() const
 {
 	return _velocity;
 }
 
-void PlayerPaddle::Update(float elapsedTime)
+void PlayerTank::Update(float elapsedTime)
 {
+	
 
+	OutputDebugStringW(L"update playertank\n");
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		_velocity -= 3.0f;

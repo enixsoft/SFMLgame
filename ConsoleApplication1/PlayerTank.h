@@ -1,12 +1,12 @@
 #pragma once
 #include "VisibleGameObject.h"
 
-class PlayerPaddle :
+class PlayerTank :
 	public VisibleGameObject
 {
 public:
-	PlayerPaddle();
-	~PlayerPaddle();
+	PlayerTank();
+	~PlayerTank();
 
 	void Update(float elapsedTime);
 	void Draw(sf::RenderWindow& rw);
