@@ -3,6 +3,7 @@
 #include "SplashScreen.h"
 #include "MainMenu.h"
 #include "PlayerPaddle.h"
+#include "Gameball.h"
 
 void Game::Start(void)
 {
@@ -16,9 +17,7 @@ void Game::Start(void)
 	  player1->SetPosition((1024 / 2) - 45, 700);
 	  _gameObjectManager.Add("Paddle1", player1);
 		   
-      GameBall *ball = new GameBall();
-      ball->SetPosition((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2) - 15);
-	  _gameObjectManager.Add("Ball", ball);
+    
 		   
 	   _gameState = Game::ShowingSplash;
 
