@@ -12,7 +12,7 @@ _maxVelocity(600.0f)
 	assert(IsLoaded());
 
 	GetSprite().setOrigin(GetSprite().getScale().x / 2, GetSprite().getScale().x / 2);
-
+	//wowow
 }
 
 
