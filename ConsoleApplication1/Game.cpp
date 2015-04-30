@@ -21,9 +21,9 @@ void Game::Start(void)
     
 	   _gameState = Game::ShowingSplash;
 
-	while (!IsExiting())
-	{
-		GameLoop();
+	while (!IsExiting()){//!!! dvolezite
+	
+		GameLoop();//myska problem loop within loop break out of stack event
 	}
 
 	_mainWindow.close();
@@ -37,10 +37,9 @@ bool Game::IsExiting()
 		return false;
 }
 
-void Game::GameLoop()
-{
+void Game::GameLoop(){
 	sf::Event currentEvent;
-		
+	_mainWindow.pollEvent(currentEvent);
 	switch (_gameState)
 		{
 		case Game::ShowingMenu:
@@ -55,24 +54,23 @@ void Game::GameLoop()
 		}
 		case Game::Playing:
 		{
-			sf::Event currentEvent;
-			while (_mainWindow.pollEvent(currentEvent))
-			{
+			//sf::Event currentEvent;
+	
 				_mainWindow.clear(sf::Color(0, 0, 0));
 				_gameObjectManager.UpdateAll();
 				_gameObjectManager.DrawAll(_mainWindow);
 				_mainWindow.display();
 
-				
+	
 
-				if (currentEvent.type == sf::Event::Closed) 
+				if (currentEvent.type == sf::Event::Closed) {
 					_gameState = Game::Exiting;
+				}
 
-				if (currentEvent.type == sf::Event::KeyPressed)
-				{
+				if (currentEvent.type == sf::Event::KeyPressed){
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) ShowMenu();
 				}
-			}
+
 			break;
 		 }
 		
