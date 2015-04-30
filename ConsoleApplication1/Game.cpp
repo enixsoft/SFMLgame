@@ -18,7 +18,7 @@ void Game::Start(void)
 	  _gameObjectManager.Add("Paddle1", player1);
 		   
     //test
-		   
+	//test2	   
 	   _gameState = Game::ShowingSplash;
 
 	while (!IsExiting())
