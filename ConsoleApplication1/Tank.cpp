@@ -5,5 +5,8 @@
 
 Tank::Tank(){
 
+}
+Tank::~Tank(){
 
+	
 }

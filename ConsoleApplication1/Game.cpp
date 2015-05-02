@@ -4,6 +4,7 @@
 #include "MainMenu.h"
 #include "PlayerTank.h"
 
+
 void Game::Start(void)
 {
 	if (Game::_gameState != Uninitialized)
@@ -16,6 +17,7 @@ void Game::Start(void)
 	PlayerTank *player = new PlayerTank();
 	  player->Load("images/PlayerPaddle.png");//obrazok na tank
 	  player->SetPosition((1024 / 2) - 45, 700);
+
 	  _gameObjectManager.Add("Player", player);
 		   
     
