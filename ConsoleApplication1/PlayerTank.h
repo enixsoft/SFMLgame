@@ -1,5 +1,6 @@
 #pragma once
 #include "VisibleGameObject.h"
+#include "Tank.h"
 
 enum SCORE_VALUES{
 	//hodnoty score
@@ -14,13 +15,13 @@ enum SCORE_VALUES{
 
 };
 
-class PlayerTank :
-	public VisibleGameObject
+class PlayerTank :public Tank
 {
 
 private:
-	float _velocity;  // -- left ++ right
-	float _maxVelocity;
+	
+
+
 	int ammo=20;//only for player  spawned = unlimited
 	int score=0;//defaultna hodnota 0
 	int numberOfDeaths=0;
@@ -29,12 +30,10 @@ private:
 
 public:
 	PlayerTank();
-	~PlayerTank();
+	//~PlayerTank();
 
 	void Update(float elapsedTime);
 	void Draw(sf::RenderWindow& rw);
-
-	float GetVelocity() const;
 
 	//zvysenie skora / moze byt aj negativnou hodnotou pokial hrac umre a neprejde level alebo take nieco
 	void increaseScore(int score);

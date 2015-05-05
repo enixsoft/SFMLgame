@@ -3,10 +3,21 @@
 #include "Game.h"
 
 
-Tank::Tank(){
-
+Tank::Tank(){//abst class
+	idCiel=idCiel++;
 }
-Tank::~Tank(){
+Tank::Tank(int ammo, TANK_TYPE tankType, int rateOfFire, int health){
+	idCiel = idCiel++;
 
-	
+	setAmmo(ammo);
+	setTankType(tankType);
+	setRateOfFire(rateOfFire);
+	setHealth(health);
+	idCiel++;
 }
+
+Tank::~Tank(){}
+
+
+
+int Tank::idCiel = 0;
