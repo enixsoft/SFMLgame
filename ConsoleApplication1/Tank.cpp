@@ -5,17 +5,19 @@
 
 Tank::Tank(){//abst class
 	idCiel=idCiel++;
+	id = idCiel;
 
 	//todo 
 }
 Tank::Tank(int ammo, TANK_TYPE tankType, int rateOfFire, int health){
 	idCiel = idCiel++;
+	id = idCiel;
 
 	setAmmo(ammo);
 	setTankType(tankType);
 	setRateOfFire(rateOfFire);
 	setHealth(health);
-	idCiel++;
+
 
 	//Load("images/PlayerTank.png");//podla typu davat obrazok//nemusi to tu byt
 	//assert(IsLoaded());//kontrola
