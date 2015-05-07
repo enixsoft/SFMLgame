@@ -23,12 +23,17 @@ void Game::Start(void)
 
 	  _gameObjectManager.Add("Player", player);
 
+
+
+	  /*
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
-		   
-    
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  */
 	   _gameState = Game::ShowingSplash;
 
 	while (!IsExiting()){//!!! dvolezite

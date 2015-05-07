@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "Windows.h"
 
+int Tank::idCiel = 0;
+
 Tank::Tank(){//abst class
 	idCiel=idCiel++;
 	id = idCiel;
@@ -42,4 +44,3 @@ void Tank::spawn(float x,float z){}
 void Tank::Update(float elapsedTime){}
 
 
-int Tank::idCiel = 0;

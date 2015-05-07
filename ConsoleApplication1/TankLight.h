@@ -18,8 +18,8 @@ public:
 		assert(IsLoaded());//kontrola
 
 		//kokotina
-		setVelocity(0);
-		setMaxVelocity(600.0f);
+		//setVelocity(0);
+		//setMaxVelocity(600.0f);
 		//end kokotina
 
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);

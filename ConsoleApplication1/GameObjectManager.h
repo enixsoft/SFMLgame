@@ -32,6 +32,7 @@ public:
 			case LIGHT:{
 				TankLight* pTank = new TankLight(freeLoc);//pouzit iny konstruktor
 				Add(""+pTank->getId(), pTank);
+				OutputDebugStringW(L"------------------TANK VYTVORENY\n");
 				//OutputDebugStringW(L"LOOPIN IN GETFREELOC\n");
 				//OutputDebu
 				//PlayerTank* p=new PlayerTank;
@@ -53,15 +54,19 @@ public:
 		int randomNumber = rand() % 9;//init point scan
 	
 		while(true){
-		
+			OutputDebugStringW(L"LOOPIN IN GETFREELOC\n");
 			if (randomNumber == 9){//ak za poslednou skoc na zaciatok
 				randomNumber = 0;
+				OutputDebugStringW(L"rovna sa 9\n");
 			}
 			if (spawnAvail[randomNumber]){
+				OutputDebugStringW(L"spawn najdeny\n");
 				break;
 			}
 			randomNumber++;
+			OutputDebugStringW(L"spawn je bloknuty\n");
 		}
+		OutputDebugStringW(L"blokujem spawn\n");
 		spawnAvail[randomNumber] = false;
 		return randomNumber;
 
@@ -71,7 +76,7 @@ public:
 
 
 	void initSpawnPoints(){//vsetky lokacie validne
-		for (int i = 0; i < (sizeof(spawnAvail) / sizeof(spawnAvail[0])); i++){
+		for (int i = 0; i < 9; i++){
 			spawnAvail[i] = true;
 		}
 	}
