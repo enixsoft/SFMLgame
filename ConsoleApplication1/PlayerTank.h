@@ -21,24 +21,50 @@ class PlayerTank :public Tank
 private:
 	
 
-
-	int ammo=20;//only for player  spawned = unlimited
 	int score=0;//defaultna hodnota 0
 	int numberOfDeaths=0;
 	int numberOfLives = 3;//neviem spravime to tak?
 	int streak = 0;//nuluje sa ak hrac umrie , pocet tankov hrac znicil bez umretia
 
 public:
-	PlayerTank();
+	PlayerTank();//def hod
+
+	PlayerTank(int ammo, TANK_TYPE tankType, int rateOfFire, int health,int score,int numberOfeaths,int numberOfLives,int streak) :Tank(ammo, tankType, rateOfFire, health){
+		setScore(score);
+		setNumberOfDeaths(numberOfDeaths);
+		setNumberOfLives(numberOfLives);
+		setStreak(streak);
+
+
+		Load("images/PlayerTank_64x77.png");//podla typu davat obrazok//nemusi to tu byt
+
+		assert(IsLoaded());//kontrola
+
+		setVelocity(0);
+		setMaxVelocity(600.0f);
+		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);
+		//GetSprite().setOrigin(GetSprite().getScale().x / 2, GetSprite().getScale().x / 2);
+		
+		spawn((1024 / 2) - 45, 700);
+
+		//nastavenie obrazku
+		//setImageName("PlayerTank.png");
+	   //Load(getImageName());
+	}
+
 	//~PlayerTank();
 
 	void Update(float elapsedTime);
-	void Draw(sf::RenderWindow& rw);
 
 	//zvysenie skora / moze byt aj negativnou hodnotou pokial hrac umre a neprejde level alebo take nieco
 	void increaseScore(int score);
 	void increaseScore(SCORE_VALUES score);
 
+
+
+	virtual void spawn(float x,float z){//create spawn manager
+		SetPosition(x,z);
+	}
 
 	void respawn();//player hit = vola sa metoda respawn
 
@@ -50,8 +76,25 @@ public:
 	int getScore(){
 		return score;
 	}
-	
-
-
+	void setNumberOfDeaths(int numberOfDeaths){
+		(numberOfDeaths >= 0) ? this->numberOfDeaths = numberOfDeaths : 0;
+	}
+	int getNumberOfDeaths(){
+		return numberOfDeaths;
+	}
+	void setNumberOfLives(int numberOfLives){
+		this->numberOfLives = numberOfLives;
+	}
+	void setStreak(int streak){
+		if (streak > 0){
+			(streak > 30) ? 1 : this->streak = streak;
+		}
+		else{
+			streak = 0;
+		}
+	}
+	int getStreak(){
+		return streak;
+	}
 
 };

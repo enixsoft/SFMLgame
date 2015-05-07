@@ -12,20 +12,22 @@ VisibleGameObject::~VisibleGameObject()
 {
 }
 
-void VisibleGameObject::Load(std::string filename)
+void VisibleGameObject::Load(std::string fileName)
 {
-	if (_filename != filename)
+
+
+	if (_filename != fileName)
 	{
 	
 	
-	if (_image.loadFromFile(filename) == false)
+		if (_image.loadFromFile(fileName) == false)
 	{
 		_filename = "";
 		_isLoaded = false;
 	}
 	else
 	{
-		_filename = filename;
+		_filename = fileName;
 		_sprite.setTexture(_image);
 		_isLoaded = true;
 	}

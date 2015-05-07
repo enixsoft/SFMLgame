@@ -1,7 +1,10 @@
 #pragma once
+
 class VisibleGameObject
 {
 public:
+
+
 	VisibleGameObject();
 	virtual ~VisibleGameObject();
 
@@ -13,10 +16,15 @@ public:
 	virtual bool IsLoaded() const;
 
 
+
+
 protected:
 	sf::Sprite& GetSprite();
 
 private:
+
+
+
 	sf::Sprite  _sprite;
 	sf::Texture _image;
 	std::string _filename;

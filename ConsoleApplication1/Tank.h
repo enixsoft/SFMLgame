@@ -2,7 +2,7 @@
 #include "VisibleGameObject.h"
 
 enum TANK_TYPE{
-	LIGHT, MEDIUM, HEAVY
+	PLAYER,LIGHT, MEDIUM, HEAVY
 };
 
 class Tank :public VisibleGameObject{//abst class
@@ -24,6 +24,14 @@ public:
 	Tank(int ammo, TANK_TYPE tankType, int rateOfFire,int health);
 
 	virtual ~Tank()=0;//pure virtual
+
+
+
+	virtual void Update(float elapsedTime);
+
+	virtual void spawn(float x,float z);//overwrite in subclass
+
+	void Draw(sf::RenderWindow& rw);
 
 
 	bool shoot();

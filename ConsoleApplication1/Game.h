@@ -27,7 +27,7 @@ private:
 
 	static GameState _gameState;
 	//static sf::RenderWindow _mainWindow;
-	static GameObjectManager _gameObjectManager;
+	 static GameObjectManager _gameObjectManager;
 
 
 

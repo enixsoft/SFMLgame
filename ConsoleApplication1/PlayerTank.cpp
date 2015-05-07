@@ -5,15 +5,7 @@
 
 PlayerTank::PlayerTank()
 {
-	setVelocity(0);
-	setMaxVelocity(600.0f);
 
-	Load("images/PlayerPaddle.png");
-
-	assert(IsLoaded());
-
-	GetSprite().setOrigin(GetSprite().getScale().x / 2, GetSprite().getScale().x / 2);
-	
 }
 
 
@@ -21,19 +13,15 @@ PlayerTank::PlayerTank()
 //{
 //}
 
-void PlayerTank::Draw(sf::RenderWindow & rw)
-{
-	OutputDebugStringW(L"Draw\n");
-	VisibleGameObject::Draw(rw);
-}
 
 
 
 void PlayerTank::Update(float elapsedTime)
 {
 	
+	//input
+	
 
-	OutputDebugStringW(L"update playertank\n");
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		setVelocity(GetVelocity()-3.0f);
@@ -47,6 +35,9 @@ void PlayerTank::Update(float elapsedTime)
 	{
 		setVelocity(0.0f);
 	}
+	//
+
+
 
 	if (GetVelocity() > getMaxVelocity()){
 		setVelocity(getMaxVelocity());

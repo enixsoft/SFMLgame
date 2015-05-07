@@ -48,6 +48,12 @@
     <ClInclude Include="GameUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TankLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -78,6 +84,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TankLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

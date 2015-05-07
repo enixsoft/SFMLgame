@@ -13,12 +13,20 @@ void Game::Start(void)
 	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Tanky!", sf::Style::Close);
 
 
+	//PlayerTank(int ammo, TANK_TYPE tankType, int rateOfFire, int health,int score,int numberOfeaths,int numberOfLives,int streak) :Tank(ammo, tankType, rateOfFire, health){
+	PlayerTank *player = new PlayerTank(0,PLAYER,100,100,100,0,3,0);//todo puzit novy konstruktor
 
-	PlayerTank *player = new PlayerTank();
-	  player->Load("images/PlayerPaddle.png");//obrazok na tank
-	  player->SetPosition((1024 / 2) - 45, 700);
+	 // player->Load("images/PlayerTank.png");//obrazok na tank
+	//SpawnManager spawnMng();
+
+	  //player->SetPosition((1024 / 2) - 45, 700);
 
 	  _gameObjectManager.Add("Player", player);
+
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  _gameObjectManager.spawnEnemyTank(LIGHT);
 		   
     
 	   _gameState = Game::ShowingSplash;
@@ -59,6 +67,7 @@ void Game::GameLoop(){
 			//sf::Event currentEvent;
 	
 				_mainWindow.clear(sf::Color(0, 0, 0));
+
 				_gameObjectManager.UpdateAll();
 				_gameObjectManager.DrawAll(_mainWindow);
 				_mainWindow.display();
