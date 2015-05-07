@@ -25,7 +25,7 @@ void Game::Start(void)
 
 
 
-	  /*
+	  
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
@@ -33,7 +33,7 @@ void Game::Start(void)
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  */
+	  
 	   _gameState = Game::ShowingSplash;
 
 	while (!IsExiting()){//!!! dvolezite
