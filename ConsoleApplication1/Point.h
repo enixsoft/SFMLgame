@@ -34,7 +34,7 @@ public:
 	}
 
 	// Move the existing point.
-	void move(float a, float b)
+	void movePoint(float a, float b)
 	{
 		xval += a;
 		yval += b;

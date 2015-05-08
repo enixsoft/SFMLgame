@@ -45,7 +45,7 @@ public:
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);
 		//GetSprite().setOrigin(GetSprite().getScale().x / 2, GetSprite().getScale().x / 2);
 		
-		spawn((1024 / 2) - 45, 700);
+		spawn((1024 / 2) - 45, 700);//nastav hraca dole v strede
 
 		//nastavenie obrazku
 		//setImageName("PlayerTank.png");

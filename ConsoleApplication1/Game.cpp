@@ -21,7 +21,7 @@ void Game::Start(void)
 
 	  //player->SetPosition((1024 / 2) - 45, 700);
 
-	  _gameObjectManager.Add("Player", player);
+	  _gameObjectManager.Add(player);
 
 
 
@@ -115,6 +115,7 @@ void Game::ShowMenu()
 	}
 	//fsdfs
 }
+
 
 
 

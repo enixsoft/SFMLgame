@@ -17,6 +17,7 @@ GameObjectManager::GameObjectManager()
 	spawnLocations[8] = Point(952, 50);
 
 
+
 	srand((unsigned int)time(NULL));//init point scan
 }
 
@@ -25,8 +26,10 @@ GameObjectManager::~GameObjectManager()
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), GameObjectDeallocator());
 }
 
-void GameObjectManager::Add(std::string name, VisibleGameObject* gameObject)
+void GameObjectManager::Add(VisibleGameObject* gameObject)
 {
+	idCiel = idCiel++;
+	std::string name =""+idCiel;//positive tanks//negative projectiles
 	_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
 }
 

@@ -8,12 +8,12 @@
 class GameObjectManager
 {
 public:
-
+	
 
 	GameObjectManager();
 	~GameObjectManager();
 
-	void Add(std::string name, VisibleGameObject* gameObject);
+	void Add(VisibleGameObject* gameObject);
 	void Remove(std::string name);
 	int GetObjectCount() const;
 	VisibleGameObject* Get(std::string name) const;
@@ -31,7 +31,7 @@ public:
 		switch (tankType){
 			case LIGHT:{
 				TankLight* pTank = new TankLight(freeLoc);//pouzit iny konstruktor
-				Add(""+pTank->getId(), pTank);
+				Add(pTank);
 				OutputDebugStringW(L"------------------TANK VYTVORENY\n");
 				//OutputDebugStringW(L"LOOPIN IN GETFREELOC\n");
 				//OutputDebu
@@ -82,6 +82,9 @@ public:
 	}
 
 private:
+
+	int idCiel=-1;
+
 	Point spawnLocations[9]; //y=768 + //original velktost tanku png
 	bool spawnAvail[9];//spawn availability
 

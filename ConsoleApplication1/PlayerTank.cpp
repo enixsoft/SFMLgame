@@ -35,6 +35,10 @@ void PlayerTank::Update(float elapsedTime)
 	{
 		setVelocity(0.0f);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		shoot();//shoot projectile//spawned ones shoot in random interval in range of random numbers
+	}
 	//
 
 

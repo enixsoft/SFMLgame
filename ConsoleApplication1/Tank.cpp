@@ -3,17 +3,13 @@
 #include "Game.h"
 #include "Windows.h"
 
-int Tank::idCiel = 0;
+
 
 Tank::Tank(){//abst class
-	idCiel=idCiel++;
-	id = idCiel;
 
 	//todo 
 }
 Tank::Tank(int ammo, TANK_TYPE tankType, int rateOfFire, int health){
-	idCiel = idCiel++;
-	id = idCiel;
 
 	setAmmo(ammo);
 	setTankType(tankType);

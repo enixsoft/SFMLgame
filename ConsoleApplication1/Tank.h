@@ -1,4 +1,5 @@
 #pragma once
+#include "Projectile.h"
 #include "VisibleGameObject.h"
 
 enum TANK_TYPE{
@@ -11,7 +12,7 @@ private:
 	float _velocity;  // -- left ++ right
 
 	int ammo;//-1 unlimited ammo
-	int id=0;//nula hrac
+	int id;//nula hrac//musi sa dat prvy do objekt manageru
 	TANK_TYPE tankType;
 	int rateOfFire;//ako rychlo tank striela
 	int health;//rozne tanky maju viac zivota ako druhe
@@ -34,8 +35,23 @@ public:
 	void Draw(sf::RenderWindow& rw);
 
 
-	bool shoot();
+	bool shoot(){
+		if (ammo!=0||ammo==-1){//-1 unlimited for spawned enemy tanks
+			//shoot
+			ammo -= 1;
+			Projectile *projectile = new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
+			//Game::getObjectManager().Add("500",projectile);
+			//create projectile and emmit from location
+			//TODO create PROJECTILE OBJECT
+			//GetSprite().getPosition().x
+			return true;
+		}
+		return false;
+	}
 	void destroyed();//moze sa menit obrazok a dat navedomie ze sa znicil tank
+
+
+
 
 	//getters / setters
 	
@@ -57,15 +73,14 @@ public:
 		this->_velocity = _velocity;
 	}
 
-
-
-	static int getIdCiel() {
-		return idCiel;
-	}
-
+	
 	int getId(){
 		return id;
 	}
+	void setId(int id){
+		this->id = id;
+	}
+
 	void setAmmo(int ammo){
 		(ammo >= 0) ? this->ammo : 0;
 	}
