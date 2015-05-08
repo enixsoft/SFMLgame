@@ -14,9 +14,8 @@ public:
 	static void Start();
 	static sf::RenderWindow _mainWindow;
 
-	static GameObjectManager getObjectManager(){
-		return _gameObjectManager;
-	}
+
+
 
 private:
 	static bool IsExiting();

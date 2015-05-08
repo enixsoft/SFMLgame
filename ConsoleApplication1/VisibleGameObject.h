@@ -15,6 +15,12 @@ public:
 	virtual sf::Vector2f GetPosition() const;
 	virtual bool IsLoaded() const;
 
+	int getId(){
+		return id;
+	}
+	void setId(int id){
+		this->id = id;
+	}
 
 
 
@@ -23,7 +29,7 @@ protected:
 
 private:
 
-
+	int id;
 
 	sf::Sprite  _sprite;
 	sf::Texture _image;

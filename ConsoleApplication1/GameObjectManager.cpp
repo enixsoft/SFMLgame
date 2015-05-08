@@ -28,8 +28,9 @@ GameObjectManager::~GameObjectManager()
 
 void GameObjectManager::Add(VisibleGameObject* gameObject)
 {
-	idCiel = idCiel++;
-	std::string name =""+idCiel;//positive tanks//negative projectiles
+	idCiel += 1;
+	gameObject->setId(idCiel);
+	std::string name =std::to_string(idCiel);//positive tanks//negative projectiles
 	_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
 }
 

@@ -2,6 +2,8 @@
 #include "Projectile.h"
 #include "VisibleGameObject.h"
 
+
+
 enum TANK_TYPE{
 	PLAYER,LIGHT, MEDIUM, HEAVY
 };
@@ -12,7 +14,6 @@ private:
 	float _velocity;  // -- left ++ right
 
 	int ammo;//-1 unlimited ammo
-	int id;//nula hrac//musi sa dat prvy do objekt manageru
 	TANK_TYPE tankType;
 	int rateOfFire;//ako rychlo tank striela
 	int health;//rozne tanky maju viac zivota ako druhe
@@ -40,7 +41,7 @@ public:
 			//shoot
 			ammo -= 1;
 			Projectile *projectile = new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
-			//Game::getObjectManager().Add("500",projectile);
+			//(projectile);
 			//create projectile and emmit from location
 			//TODO create PROJECTILE OBJECT
 			//GetSprite().getPosition().x
@@ -74,12 +75,6 @@ public:
 	}
 
 	
-	int getId(){
-		return id;
-	}
-	void setId(int id){
-		this->id = id;
-	}
 
 	void setAmmo(int ammo){
 		(ammo >= 0) ? this->ammo : 0;
