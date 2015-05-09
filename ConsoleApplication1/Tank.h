@@ -3,7 +3,6 @@
 #include "VisibleGameObject.h"
 
 
-
 enum TANK_TYPE{
 	PLAYER,LIGHT, MEDIUM, HEAVY
 };
@@ -41,6 +40,7 @@ public:
 			//shoot
 			ammo -= 1;
 			Projectile *projectile = new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
+
 			//(projectile);
 			//create projectile and emmit from location
 			//TODO create PROJECTILE OBJECT

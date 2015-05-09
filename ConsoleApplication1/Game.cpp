@@ -24,8 +24,6 @@ void Game::Start(void)
 	  _gameObjectManager.Add(player);
 
 
-
-	  
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);
 	  _gameObjectManager.spawnEnemyTank(LIGHT);

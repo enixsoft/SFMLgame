@@ -15,8 +15,6 @@ public:
 	static sf::RenderWindow _mainWindow;
 
 
-
-
 private:
 	static bool IsExiting();
 	static void GameLoop();
