@@ -13,7 +13,7 @@ public:
 	GameObjectManager();
 	~GameObjectManager();
 
-	void Add(VisibleGameObject* gameObject);
+	std::string Add(VisibleGameObject* gameObject);
 	void Remove(std::string name);
 	int GetObjectCount() const;
 	VisibleGameObject* Get(std::string name) const;

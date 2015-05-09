@@ -26,12 +26,13 @@ GameObjectManager::~GameObjectManager()
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), GameObjectDeallocator());
 }
 
-void GameObjectManager::Add(VisibleGameObject* gameObject)
+std::string GameObjectManager::Add(VisibleGameObject* gameObject)
 {
 	idCiel += 1;
 	gameObject->setId(idCiel);
 	std::string name =std::to_string(idCiel);//positive tanks//negative projectiles
 	_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
+	return std::to_string(idCiel);
 }
 
 void GameObjectManager::Remove(std::string name)

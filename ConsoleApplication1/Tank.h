@@ -40,15 +40,16 @@ public:
 	//	if (ammo!=0||ammo==-1){//-1 unlimited for spawned enemy tanks//kontrola sa robi pri volani 
 			//shoot
 			ammo -= 1;
-			Projectile *projectile = new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
 			OutputDebugStringW(L"hello kurva\n");
+			return new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
+			
 			//mainApp.getGame().getGameObjectManager().Add(projectile);
 
 			//(projectile);
 			//create projectile and emmit from location
 			//TODO create PROJECTILE OBJECT
 			//GetSprite().getPosition().x
-			return projectile;
+			//return projectile;
 	//	}
 	//	return NULL;
 	}

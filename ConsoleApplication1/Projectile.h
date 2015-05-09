@@ -23,7 +23,7 @@ public:
 
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);//center origin on image
 
-		spawn(spawnPoint.getX(), spawnPoint.getY(), emmitDirection);
+		spawn(spawnPoint.getX(), spawnPoint.getY() - 38.5, emmitDirection);
 		//after spawn fly straight till next object encountered or out of bounds
 		
 
@@ -47,7 +47,7 @@ public:
 		switch (projectileDirection){
 			//	DIRECTION_NORTH, DIRECTION_EAST, DIRECTION_SOUTH, DIRECTION_WEST//clockwise 0-3
 		case DIRECTION_NORTH:{
-				if (!(GetPosition().y <= 0)){//ak sa nachadzam hore
+				if (!(GetPosition().y < -100)){//ak sa nachadzam hore
 					GetSprite().move(0, (velocity*elapsedTime)*-1);
 				}
 				else{

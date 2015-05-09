@@ -93,7 +93,9 @@ void Game::GameLoop(){
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 						//	if (ammo!=0||ammo==-1)
 						if (player->getAmmo() != 0 || player->getAmmo()==-1){
-							_gameObjectManager.Add(player->shoot());
+							Projectile *tmp = player->shoot();
+							std::string id=_gameObjectManager.Add(tmp);
+
 						}//shoot projectile//spawned ones shoot in random interval in range of random numbers
 					}
 				}
