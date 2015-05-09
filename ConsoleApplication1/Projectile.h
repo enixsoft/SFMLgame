@@ -1,6 +1,8 @@
 #pragma once
 #include "VisibleGameObject.h"
 #include "Point.h"
+#include <Windows.h>
+
 enum PROJECTILE_DIRECTION{
 	DIRECTION_NORTH, DIRECTION_EAST, DIRECTION_SOUTH, DIRECTION_WEST//clockwise 0-3 // staci nam len juh a sever
 };
@@ -26,7 +28,7 @@ public:
 		
 
 
-
+		OutputDebugStringW(L"Projektil vytvoreny\n");
 
 		//check whether or not position at the edge then destory object
 
@@ -46,10 +48,10 @@ public:
 			//	DIRECTION_NORTH, DIRECTION_EAST, DIRECTION_SOUTH, DIRECTION_WEST//clockwise 0-3
 		case DIRECTION_NORTH:{
 				if (!(GetPosition().y <= 0)){//ak sa nachadzam hore
-					GetSprite().move(0, velocity * elapsedTime);
+					GetSprite().move(0, (velocity*elapsedTime)*-1);
 				}
 				else{
-					delete this;//nesom si isty
+					//delete this;//nesom si isty
 				}
 				break;
 			}

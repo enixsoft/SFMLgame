@@ -4,6 +4,7 @@
 #include "MainMenu.h"
 #include "PlayerTank.h"
 
+PlayerTank *player;
 
 void Game::Start(void)
 {
@@ -14,7 +15,7 @@ void Game::Start(void)
 
 
 	//PlayerTank(int ammo, TANK_TYPE tankType, int rateOfFire, int health,int score,int numberOfeaths,int numberOfLives,int streak) :Tank(ammo, tankType, rateOfFire, health){
-	PlayerTank *player = new PlayerTank(0,PLAYER,100,100,100,0,3,0);//todo puzit novy konstruktor
+	player = new PlayerTank(0,PLAYER,100,100,100,0,3,0);//todo puzit novy konstruktor
 
 	 // player->Load("images/PlayerTank.png");//obrazok na tank
 	//SpawnManager spawnMng();
@@ -86,6 +87,18 @@ void Game::GameLoop(){
 				if (currentEvent.type == sf::Event::KeyPressed){
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) ShowMenu();
 				}
+
+				if (currentEvent.type == sf::Event::KeyPressed)
+				{
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+						//	if (ammo!=0||ammo==-1)
+						if (player->getAmmo() != 0 || player->getAmmo()==-1){
+							_gameObjectManager.Add(player->shoot());
+						}//shoot projectile//spawned ones shoot in random interval in range of random numbers
+					}
+				}
+				//
+
 
 			break;
 		 }
