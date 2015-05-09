@@ -10,6 +10,7 @@ enum PROJECTILE_DIRECTION{
 class Projectile :public VisibleGameObject{
 
 private:
+	int id;
 	float velocity=300;//does not need getters/setter
 	PROJECTILE_DIRECTION projectileDirection;
 
@@ -78,5 +79,13 @@ public:
 		}//end switch
 	}//end meth
 
+	void setId(int id){
+		if (id<0){
+			this->id = id;
+		}
+	}
+	int getId(){
+		return id;
+	}
 
 };

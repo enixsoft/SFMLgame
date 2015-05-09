@@ -2,6 +2,7 @@
 #include "GameObjectManager.h"
 #include "Game.h"
 #include <random>
+#include <limits>
 
 GameObjectManager::GameObjectManager()
 {
@@ -26,13 +27,36 @@ GameObjectManager::~GameObjectManager()
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), GameObjectDeallocator());
 }
 
-std::string GameObjectManager::Add(VisibleGameObject* gameObject)
+std::string GameObjectManager::Add(VisibleGameObject* gameObject)//ak je tank pozitivne id ak je naboj negativne id
 {
-	idCiel += 1;
-	gameObject->setId(idCiel);
-	std::string name =std::to_string(idCiel);//positive tanks//negative projectiles
-	_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
-	return std::to_string(idCiel);
+	//asi ciel bude pre projektily a tanky zvlast 
+
+	if (Tank* t = dynamic_cast<Tank*>(gameObject)) {// nieco ako instanceof in java .. 
+		//incrementuj tank id etc
+		idCiel += 1;
+		gameObject->setId(idCiel);
+		std::string name = std::to_string(idCiel);//positive tanks//negative projectiles
+		_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
+		return std::to_string(idCiel);
+	}
+	else if (Projectile* t = dynamic_cast<Projectile*>(gameObject)){
+		idCielProjectiles -= 1;
+		gameObject->setId(idCielProjectiles);
+		std::string name = std::to_string(idCielProjectiles);//positive tanks//negative projectiles
+		_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
+		return std::to_string(idCielProjectiles);
+	}
+	else{
+		return std::to_string(std::numeric_limits<int>::max());
+	}
+
+
+
+	
+	//gameObject->setId(idCiel);
+	//std::string name =std::to_string(idCiel);//positive tanks//negative projectiles
+	//_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
+	//return std::to_string(idCiel);
 }
 
 void GameObjectManager::Remove(std::string name)

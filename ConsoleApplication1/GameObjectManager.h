@@ -81,9 +81,16 @@ public:
 		}
 	}
 
+	int getIdCiel(){
+		return idCiel;
+	}
+	int getIdCielProjectiles(){
+		return idCielProjectiles;
+	}
 private:
 
-	int idCiel=-1;
+	int idCiel=-1;//-1 lebo 0 je pre hraca ktory podje do manageru ako prvy
+	int idCielProjectiles = 0;//will go to negative nums
 
 	Point spawnLocations[9]; //y=768 + //original velktost tanku png
 	bool spawnAvail[9];//spawn availability

@@ -24,16 +24,11 @@ void Game::Start(void)
 
 	  _gameObjectManager.Add(player);
 
-
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
-	  _gameObjectManager.spawnEnemyTank(LIGHT);
+	  for (int i = 0; i < 9;i++){
+		  _gameObjectManager.spawnEnemyTank(LIGHT);
+		  //sprav thread ktory bude robit strielat tanky
+	  }
+	 
 
 	   _gameState = Game::ShowingSplash;
 
@@ -100,7 +95,10 @@ void Game::GameLoop(){
 					}
 				}
 				//
+				
+				//for (int i = 1; i < ; i){//if instance of 
 
+				//}
 
 			break;
 		 }

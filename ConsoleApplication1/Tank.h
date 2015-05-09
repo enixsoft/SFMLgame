@@ -15,10 +15,11 @@ private:
 
 	int ammo;//-1 unlimited ammo
 	TANK_TYPE tankType;
-	int rateOfFire;//ako rychlo tank striela
+	int rateOfFire;//ako rychlo tank striela// v pixeloch .. pracuje s poziciou tanku kolk osa pohol etc
 	int health;//rozne tanky maju viac zivota ako druhe
 
-	static int idCiel;//vrch id generovane
+	//static int idCiel;//vrch id generovane
+
 
 public:
 	
