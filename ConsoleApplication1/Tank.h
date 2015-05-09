@@ -41,6 +41,8 @@ public:
 			ammo -= 1;
 			Projectile *projectile = new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
 
+			//mainApp.getGame().getGameObjectManager().Add(projectile);
+
 			//(projectile);
 			//create projectile and emmit from location
 			//TODO create PROJECTILE OBJECT

@@ -120,6 +120,6 @@ void Game::ShowMenu()
 
 
 // A quirk of C++, static member variables need to be instantiated outside of the class
-Game::GameState Game::_gameState = Uninitialized;
+//Game::GameState Game::_gameState = Uninitialized;
 sf::RenderWindow Game::_mainWindow;
-GameObjectManager Game::_gameObjectManager;
+//GameObjectManager Game::_gameObjectManager;

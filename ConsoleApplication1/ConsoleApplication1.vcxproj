@@ -88,6 +88,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameUtils.h" />
+    <ClInclude Include="MainApp.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PlayerTank.h" />
     <ClInclude Include="Point.h" />
@@ -101,9 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameUtils.cpp" />
-    <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PlayerTank.cpp" />
     <ClCompile Include="Projectile.cpp" />
