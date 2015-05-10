@@ -4,7 +4,6 @@ class VisibleGameObject
 {
 public:
 
-
 	VisibleGameObject();
 	virtual ~VisibleGameObject();
 
@@ -35,5 +34,7 @@ private:
 	sf::Texture _image;
 	std::string _filename;
 	bool _isLoaded;
+
+
 
 };

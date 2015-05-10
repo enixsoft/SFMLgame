@@ -24,12 +24,16 @@ public:
 
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);//center origin on image
 
-		spawn(spawnPoint.getX(), spawnPoint.getY() - 38.5, emmitDirection);
-		//after spawn fly straight till next object encountered or out of bounds
+		if (emmitDirection == DIRECTION_NORTH){
+			spawn(spawnPoint.getX(), spawnPoint.getY() - 38.5, emmitDirection);
+		}
+		else{
+			spawn(spawnPoint.getX(), spawnPoint.getY() + 38.5, emmitDirection);
+		}
 		
 
-
-		OutputDebugStringW(L"Projektil vytvoreny\n");
+		//after spawn fly straight till next object encountered or out of bounds
+		
 
 		//check whether or not position at the edge then destory object
 
@@ -61,11 +65,11 @@ public:
 				break;
 			}
 			case DIRECTION_SOUTH:{
-				if (!(GetPosition().y >=768)){//ak sa nachadzam hore
+				if (!(GetPosition().y >=868)){//ak sa nachadzam hore
 					GetSprite().move(0, velocity * elapsedTime);
 				}
 				else{
-					delete this;//nesom si isty
+					
 				}
 				break;
 			}

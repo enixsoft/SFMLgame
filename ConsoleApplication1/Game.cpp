@@ -3,7 +3,7 @@
 #include "SplashScreen.h"
 #include "MainMenu.h"
 #include "PlayerTank.h"
-
+#include <random>
 PlayerTank *player;
 
 void Game::Start(void)
@@ -12,6 +12,7 @@ void Game::Start(void)
 		return;
 
 	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Tanky!", sf::Style::Close);
+
 
 
 	//PlayerTank(int ammo, TANK_TYPE tankType, int rateOfFire, int health,int score,int numberOfeaths,int numberOfLives,int streak) :Tank(ammo, tankType, rateOfFire, health){
@@ -95,10 +96,20 @@ void Game::GameLoop(){
 					}
 				}
 				//
-				
-				//for (int i = 1; i < ; i){//if instance of 
+				//toto bude sot narocne
+				for (int i = 1; i <_gameObjectManager.GetObjectCount(); i++){//if instance of 
+					VisibleGameObject* t = _gameObjectManager.Get(std::to_string(i));
 
-				//}
+					if (t){
+						if (!(rand() % 2000)){
+							Projectile *pp =new Projectile(Point(t->GetPosition().x, t->GetPosition().y), DIRECTION_SOUTH);
+							_gameObjectManager.Add(pp);
+						}
+					}
+					
+
+					
+				}
 
 			break;
 		 }

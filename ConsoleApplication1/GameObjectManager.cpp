@@ -78,6 +78,9 @@ VisibleGameObject* GameObjectManager::Get(std::string name) const
 
 }
 
+
+
+
 int GameObjectManager::GetObjectCount() const
 {
 	return _gameObjects.size();
