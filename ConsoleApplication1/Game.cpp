@@ -4,7 +4,13 @@
 #include "MainMenu.h"
 #include "PlayerTank.h"
 #include <random>
+
 PlayerTank *player;
+
+
+//ColisionDaemon cd;//dojebane includy zase
+
+
 
 void Game::Start(void)
 {
@@ -13,7 +19,7 @@ void Game::Start(void)
 
 	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Tanky!", sf::Style::Close);
 
-
+	
 
 	//PlayerTank(int ammo, TANK_TYPE tankType, int rateOfFire, int health,int score,int numberOfeaths,int numberOfLives,int streak) :Tank(ammo, tankType, rateOfFire, health){
 	player = new PlayerTank(0,PLAYER,100,100,100,0,3,0);//todo puzit novy konstruktor
@@ -29,7 +35,7 @@ void Game::Start(void)
 		  _gameObjectManager.spawnEnemyTank(LIGHT);
 		  //sprav thread ktory bude robit strielat tanky
 	  }
-	 
+
 
 	   _gameState = Game::ShowingSplash;
 
@@ -87,7 +93,6 @@ void Game::GameLoop(){
 				if (currentEvent.type == sf::Event::KeyPressed)
 				{
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-						//	if (ammo!=0||ammo==-1)
 						if (player->getAmmo() != 0 || player->getAmmo()==-1){
 							Projectile *tmp = player->shoot();
 							std::string id=_gameObjectManager.Add(tmp);

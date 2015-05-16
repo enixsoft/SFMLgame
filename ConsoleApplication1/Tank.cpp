@@ -20,8 +20,6 @@ Tank::Tank(int ammo, TANK_TYPE tankType, int rateOfFire, int health){
 	//Load("images/PlayerTank.png");//podla typu davat obrazok//nemusi to tu byt
 	//assert(IsLoaded());//kontrola
 
-	OutputDebugStringW(L"VOLAM KOKOTINY\n");
-
 	//orig hodnoty player
 	//setVelocity(0);
 	//setMaxVelocity(600.0f);
