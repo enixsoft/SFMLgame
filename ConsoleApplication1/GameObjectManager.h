@@ -32,11 +32,6 @@ public:
 			case LIGHT:{
 				TankLight* pTank = new TankLight(freeLoc);//pouzit iny konstruktor
 				Add(pTank);
-				OutputDebugStringW(L"------------------TANK VYTVORENY\n");
-				//OutputDebugStringW(L"LOOPIN IN GETFREELOC\n");
-				//OutputDebu
-				//PlayerTank* p=new PlayerTank;
-				//Add(p->getId,p);
 				break;
 			}
 
@@ -48,25 +43,21 @@ public:
 
 	}
 
-
+	/*Nachadza volnu lokaciu pre spawn tanku*/
 	int getFreeLocation(){
-
-		int randomNumber = rand() % 9;//init point scan
+		//bod od ktoreho zacina skenovat pre volnu lokaciu, musi byt nahodne inak by to vyzeralo zle po zniceni tanku.
+		int randomNumber = rand() % 9;
 	
+			
 		while(true){
-			OutputDebugStringW(L"LOOPIN IN GETFREELOC\n");
 			if (randomNumber == 9){//ak za poslednou skoc na zaciatok
 				randomNumber = 0;
-				OutputDebugStringW(L"rovna sa 9\n");
 			}
 			if (spawnAvail[randomNumber]){
-				OutputDebugStringW(L"spawn najdeny\n");
 				break;
 			}
 			randomNumber++;
-			OutputDebugStringW(L"spawn je bloknuty\n");
 		}
-		OutputDebugStringW(L"blokujem spawn\n");
 		spawnAvail[randomNumber] = false;
 		return randomNumber;
 
@@ -74,8 +65,8 @@ public:
 
 	
 
-
-	void initSpawnPoints(){//vsetky lokacie validne
+	//vsetky lokacie validne
+	void initSpawnPoints(){
 		for (int i = 0; i < 9; i++){
 			spawnAvail[i] = true;
 		}
@@ -88,15 +79,22 @@ public:
 		return idCielProjectiles;
 	}
 private:
-
+	//drzi vrch doteraz pritomnych id na scene , pre tanky
 	int idCiel=-1;//-1 lebo 0 je pre hraca ktory podje do manageru ako prvy
-	int idCielProjectiles = 0;//will go to negative nums
 
-	Point spawnLocations[9]; //y=768 + //original velktost tanku png
+
+	int idCielProjectiles = 0;//ide do negativnych hodnot
+
+	//9 spawn lokacii defaultne , inicializovane v kontruktory
+	Point spawnLocations[9]; //y=768 + //original velkost tanku png
+
+	//dostupnost lokacii false, zmeni sa v kontruktore na true
 	bool spawnAvail[9];//spawn availability
 
 	std::map<std::string, VisibleGameObject*> _gameObjects;
 	sf::Clock clock;
+
+	//dealokuje miest opre objekty, vola ich kontruktory.
 	struct GameObjectDeallocator
 	{
 		void operator()(const std::pair<std::string, VisibleGameObject*> & p) const

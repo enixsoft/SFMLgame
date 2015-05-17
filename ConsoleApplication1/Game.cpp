@@ -5,30 +5,31 @@
 #include "PlayerTank.h"
 #include <random>
 
+/*Objekt hraca*/
 PlayerTank *player;
 
 
 //ColisionDaemon cd;//dojebane includy zase
 
 
-
+/*Metoda ktora riadi chod hry*/
 void Game::Start(void)
 {
+
+	/*Pokial hra nieje neinicializovana neni mozne vykonavat tuto metodu*/
 	if (Game::_gameState != Uninitialized)
 		return;
 
+
+	/*Vytvorenie okna ktore ma za moznost byt zatvorene a fixnute parametre*/
 	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Tanky!", sf::Style::Close);
 
 	
 
-	//PlayerTank(int ammo, TANK_TYPE tankType, int rateOfFire, int health,int score,int numberOfeaths,int numberOfLives,int streak) :Tank(ammo, tankType, rateOfFire, health){
-	player = new PlayerTank(0,PLAYER,100,100,100,0,3,0);//todo puzit novy konstruktor
+	//Inicializacia hraca
+	player = new PlayerTank(0,PLAYER,100,100,100,0,3,0);
 
-	 // player->Load("images/PlayerTank.png");//obrazok na tank
-	//SpawnManager spawnMng();
-
-	  //player->SetPosition((1024 / 2) - 45, 700);
-
+	/*Pridavanie objektov do objekt managera hrac,tanky*/
 	  _gameObjectManager.Add(player);
 
 	  for (int i = 0; i < 9;i++){
@@ -36,17 +37,19 @@ void Game::Start(void)
 		  //sprav thread ktory bude robit strielat tanky
 	  }
 
-
+	  /*Zmena stavu na ukazuje splash screen*/
 	   _gameState = Game::ShowingSplash;
 
+	   /*Pokial sa nezmeni state na is exiting vykonavat cyklus hry*/
 	while (!IsExiting()){//!!! dvolezite
 	
 		GameLoop();//myska problem loop within loop break out of stack event
 	}
-
+	
 	_mainWindow.close();
 }
 
+/*Metoda ktora sa stara o uzatvorenie hry*/
 bool Game::IsExiting()
 {
 	if (_gameState == Game::Exiting)
@@ -54,10 +57,13 @@ bool Game::IsExiting()
 	else
 		return false;
 }
-
+/*Vykonava sa nanstop*/
 void Game::GameLoop(){
+
+	/*Zobranie event poolu z okna hry*/
 	sf::Event currentEvent;
 	_mainWindow.pollEvent(currentEvent);
+
 	switch (_gameState)
 		{
 		case Game::ShowingMenu:
@@ -72,8 +78,8 @@ void Game::GameLoop(){
 		}
 		case Game::Playing:
 		{
-			//sf::Event currentEvent;
-	
+			/*Vykonavanie akcii na zaklade eventov*/
+
 				_mainWindow.clear(sf::Color(0, 0, 0));
 
 				_gameObjectManager.UpdateAll();
@@ -81,7 +87,7 @@ void Game::GameLoop(){
 				_mainWindow.display();
 
 	
-
+			
 				if (currentEvent.type == sf::Event::Closed) {
 					_gameState = Game::Exiting;
 				}
@@ -92,21 +98,22 @@ void Game::GameLoop(){
 
 				if (currentEvent.type == sf::Event::KeyPressed)
 				{
+					/*Strelba hraca*/
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 						if (player->getAmmo() != 0 || player->getAmmo()==-1){
 							Projectile *tmp = player->shoot();
 							std::string id=_gameObjectManager.Add(tmp);
 
-						}//shoot projectile//spawned ones shoot in random interval in range of random numbers
+						}
 					}
 				}
-				//
-				//toto bude sot narocne
+				/*Loop cez vsetky  tanky*/
 				for (int i = 1; i <_gameObjectManager.GetObjectCount(); i++){//if instance of 
 					VisibleGameObject* t = _gameObjectManager.Get(std::to_string(i));
-
+					/*Strielaj v nahodnom intrevale - strelba pre spawnute nepriatelske tanky nachadzajuce sa v objekt managery*/
 					if (t){
 						if (!(rand() % 2000)){
+							/*Vytvorenie projektilu a vsunutie ho do objekt manageru*/
 							Projectile *pp =new Projectile(Point(t->GetPosition().x, t->GetPosition().y), DIRECTION_SOUTH);
 							_gameObjectManager.Add(pp);
 						}
@@ -121,13 +128,14 @@ void Game::GameLoop(){
 		
 	}
 }
+/*Ukaze splash screen aplikacie*/
 void Game::ShowSplashScreen()
 {
 	SplashScreen splashScreen;
 	splashScreen.Show(_mainWindow);
 	_gameState = Game::ShowingMenu;
 }
-
+/*Ukaze menu aplikacie s moznostou spustit hru a  ukoncit,meni state hry*/
 void Game::ShowMenu()
 {
 	MainMenu mainMenu;
@@ -142,13 +150,7 @@ void Game::ShowMenu()
 			break;
 
 	}
-	//fsdfs
+
 }
 
-
-
-
-// A quirk of C++, static member variables need to be instantiated outside of the class
-//Game::GameState Game::_gameState = Uninitialized;
 sf::RenderWindow Game::_mainWindow;
-//GameObjectManager Game::_gameObjectManager;

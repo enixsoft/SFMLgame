@@ -6,14 +6,7 @@
 
 int main(int argc, _TCHAR* argv[])
 {
-	OutputDebugStringW(L"My output string.\n");
-
-	//Game game;
-
+	//spusti hru
 	mainApp.getGame().Start();
-
-	//Game::Start();
-	//hey
-
 	return 0;
 }

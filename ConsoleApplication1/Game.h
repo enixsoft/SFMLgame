@@ -16,24 +16,24 @@ private:
 	void ShowSplashScreen();
 	void ShowMenu();
 
+	/*Rozne stadia v ktorych sa hra moze nachadzat*/
 	enum GameState {
 		Uninitialized, ShowingSplash, Paused,
 		ShowingMenu, Playing, Exiting
 	};
 
+	/*defaultne game state neinicializovana*/
 	GameState _gameState = Uninitialized;
-	//sf::RenderWindow Game::_mainWindow;
-	//static sf::RenderWindow _mainWindow;
 	GameObjectManager _gameObjectManager;
 
 	static sf::RenderWindow _mainWindow;
 
 public:
+	/*Konstanty pre vysku a sirku obrazovky, teda v nasom pripade okna aplikacie.*/
 	const static int SCREEN_WIDTH = 1024;
 	const static int SCREEN_HEIGHT = 768;
 
 	 void Start();
-	
 
 
 	 GameObjectManager getGameObjectManager(){

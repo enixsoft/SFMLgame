@@ -35,24 +35,19 @@ public:
 		setNumberOfLives(numberOfLives);
 		setStreak(streak);
 
-
-		Load("images/PlayerTank_64x77.png");//podla typu davat obrazok//nemusi to tu byt
+		//naciateni obrazku na objekt
+		Load("images/PlayerTank_64x77.png");
 
 		assert(IsLoaded());//kontrola
 
 		setVelocity(0);
 		setMaxVelocity(600.0f);
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);
-		//GetSprite().setOrigin(GetSprite().getScale().x / 2, GetSprite().getScale().x / 2);
 		
 		spawn((1024 / 2) - 45, 700);//nastav hraca dole v strede
 
-		//nastavenie obrazku
-		//setImageName("PlayerTank.png");
-	   //Load(getImageName());
 	}
 
-	//~PlayerTank();
 
 	void Update(float elapsedTime);
 

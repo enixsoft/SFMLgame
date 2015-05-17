@@ -6,6 +6,7 @@
 
 GameObjectManager::GameObjectManager()
 {
+	//nastavenie lokacii spawnov
 	initSpawnPoints();
 	spawnLocations[0] = Point(44,50);
 	spawnLocations[1] = Point(157, 50);
@@ -21,44 +22,37 @@ GameObjectManager::GameObjectManager()
 
 	srand((unsigned int)time(NULL));//init point scan
 }
-
+//Destruktor vymazava vsetky objekty nachadzajuce sa v gom
 GameObjectManager::~GameObjectManager()
 {
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), GameObjectDeallocator());
 }
-
+//pridavanie objektu do gom
 std::string GameObjectManager::Add(VisibleGameObject* gameObject)//ak je tank pozitivne id ak je naboj negativne id
 {
-	//asi ciel bude pre projektily a tanky zvlast 
-
-	if (Tank* t = dynamic_cast<Tank*>(gameObject)) {// nieco ako instanceof in java .. 
-		//incrementuj tank id etc
+	//Pozeranie ci je instancia objektu tank
+	if (Tank* t = dynamic_cast<Tank*>(gameObject)) {// nieco ako instanceof v jave .. 
+		//incrementuj tank id
 		idCiel += 1;
 		gameObject->setId(idCiel);
-		std::string name = std::to_string(idCiel);//positive tanks//negative projectiles
-		_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
+		//vladanie do gom
+		_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(std::to_string(idCiel), gameObject));
+		//vracia vlozene id
 		return std::to_string(idCiel);
 	}
 	else if (Projectile* t = dynamic_cast<Projectile*>(gameObject)){
 		idCielProjectiles -= 1;
 		gameObject->setId(idCielProjectiles);
-		std::string name = std::to_string(idCielProjectiles);//positive tanks//negative projectiles
+		std::string name = std::to_string(idCielProjectiles);
 		_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
 		return std::to_string(idCielProjectiles);
 	}
 	else{
+		//inak vrati max int.
 		return std::to_string(std::numeric_limits<int>::max());
 	}
-
-
-
-	
-	//gameObject->setId(idCiel);
-	//std::string name =std::to_string(idCiel);//positive tanks//negative projectiles
-	//_gameObjects.insert(std::pair<std::string, VisibleGameObject*>(name, gameObject));
-	//return std::to_string(idCiel);
 }
-
+//mazanie objektu z gom
 void GameObjectManager::Remove(std::string name)
 {
 	std::map<std::string, VisibleGameObject*>::iterator results = _gameObjects.find(name);
@@ -68,7 +62,7 @@ void GameObjectManager::Remove(std::string name)
 		_gameObjects.erase(results);
 	}
 }
-
+//dostanie objektu z gom na zaklade id
 VisibleGameObject* GameObjectManager::Get(std::string name) const
 {
 	std::map<std::string, VisibleGameObject*>::const_iterator results = _gameObjects.find(name);
@@ -80,13 +74,13 @@ VisibleGameObject* GameObjectManager::Get(std::string name) const
 
 
 
-
+//da pocet objektov v gom
 int GameObjectManager::GetObjectCount() const
 {
 	return _gameObjects.size();
 }
 
-
+//vykresli vsetky
 void GameObjectManager::DrawAll(sf::RenderWindow& renderWindow)
 {
 	std::map<std::string, VisibleGameObject*>::const_iterator itr = _gameObjects.begin();
@@ -96,7 +90,7 @@ void GameObjectManager::DrawAll(sf::RenderWindow& renderWindow)
 		itr++;
 	}
 }
-
+//updatne vsetky objekty
 void GameObjectManager::UpdateAll()
 {
 	std::map<std::string, VisibleGameObject*>::const_iterator itr =
