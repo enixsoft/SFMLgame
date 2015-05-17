@@ -51,6 +51,7 @@ public:
 					GetSprite().move(0, (velocity*elapsedTime)*-1);
 				}
 				else{
+
 				//	tu uz by bolo vhodne znicit ho alebo odniekal inak zavolat metodu ktora ho znici
 				}
 				break;
