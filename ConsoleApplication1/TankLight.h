@@ -17,11 +17,11 @@ public:
 		Load("images/tankLight_67x77.png");
 		assert(IsLoaded());//kontrola
 
-		//setVelocity(0);
-		//setMaxVelocity(600.0f);
-		
+		//nahodna rychlost nastavena tanku
 		setVelocity((rand() % 20)+30);
+
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);
+		//otocenie tanku aby celil smeru hraca
 		GetSprite().rotate(180);
 		spawn(spawnPoint.getX(), spawnPoint.getY());
 	}
@@ -36,7 +36,8 @@ public:
 	}
 
 	void Update(float elapsedTime){
-		if (!(GetPosition().y > (768+100))){//ak sa nachadzam hore
+		//ak sa nachadzam hore
+		if (!(GetPosition().y > (768+100))){
 			GetSprite().move(0, (GetVelocity()*elapsedTime));
 		}
 		else{

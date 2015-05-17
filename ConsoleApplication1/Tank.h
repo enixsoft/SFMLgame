@@ -18,9 +18,6 @@ private:
 	int rateOfFire;//ako rychlo tank striela// v pixeloch .. pracuje s poziciou tanku kolk osa pohol etc//neni pouzite
 	int health;//rozne tanky maju viac zivota ako druhe
 
-	//static int idCiel;//vrch id generovane
-
-
 public:
 	
 	Tank();
@@ -32,18 +29,15 @@ public:
 
 	virtual void Update(float elapsedTime);
 
-	virtual void spawn(float x,float z);//overwrite in subclass
+	virtual void spawn(float x,float z);//prepisat v subclass
 
 	void Draw(sf::RenderWindow& rw);
 
 
 	Projectile* shoot(){
-	//	if (ammo!=0||ammo==-1){//-1 unlimited for spawned enemy tanks//kontrola sa robi pri volani 
-			//shoot
 			ammo -= 1;
 			return new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
 			
-		
 	}
 	void destroyed();//moze sa menit obrazok a dat navedomie ze sa znicil tank
 
@@ -51,9 +45,6 @@ public:
 
 
 	//getters / setters
-	
-
-
 	void setMaxVelocity(float _maxVelocity){
 		this->_maxVelocity = _maxVelocity;
 	}

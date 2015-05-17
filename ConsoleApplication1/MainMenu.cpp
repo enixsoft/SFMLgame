@@ -5,14 +5,14 @@
 MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 {
 
-	//Load menu image from file
+	//Nacitaj menu obrazok
 	sf::Texture image;
 	image.loadFromFile("images/mainmenu.png");
 	sf::Sprite sprite(image);
 
-	//Setup clickable regions
+	//Nastavenie klikacich regionov
 
-	//Play menu item coordinates
+	//Play menu koordinaty
 	MenuItem playButton;
 	playButton.rect.top = 145;
 	playButton.rect.height = 380;
@@ -20,7 +20,7 @@ MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 	playButton.rect.width = 1023;
 	playButton.action = Play;
 
-	//Exit menu item coordinates
+	//Exit menu koordinaty
 	MenuItem exitButton;
 	exitButton.rect.left = 0;
 	exitButton.rect.width = 1023;
@@ -28,44 +28,37 @@ MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 	exitButton.rect.height = 560;
 	exitButton.action = Exit;
 
+	//Danie obidvoch tlacitok do menuItems
 	_menuItems.push_back(playButton);
 	_menuItems.push_back(exitButton);
-
+	//vykreslenie a zobrazenie
 	window.draw(sprite);
 	window.display();
 
 	return GetMenuResponse(window);
 }
-
+//Spravuj kliknutie
 MainMenu::MenuResult MainMenu::HandleClick(int x, int y)
 {
 	std::list<MenuItem>::iterator it;
-
+	//Pozre sa cez vsetky 'tlacitka'
 	for (it = _menuItems.begin(); it != _menuItems.end(); it++)
 	{
 		sf::Rect<int> menuItemRect = (*it).rect;
-		/*if (x > menuItemRect.left
-			&& x < menuItemRect.left + menuItemRect.width
-			&& y > menuItemRect.top
-			&& y < menuItemRect.height + menuItemRect.top)
-		
-			return (*it).action;
-		
-		}
-	*/
+	
 	
 		if (menuItemRect.height > y
 		 && menuItemRect.top < y
 		 && menuItemRect.left < x
 		 && menuItemRect.width > x)
 		    
-
+	//vrati akciu
 	return (*it).action;
 		}
 	
 	return Nothing;
 }
-
+//vrati odozvu menu
 MainMenu::MenuResult  MainMenu::GetMenuResponse(sf::RenderWindow& window)
 {
 	sf::Event menuEvent;
