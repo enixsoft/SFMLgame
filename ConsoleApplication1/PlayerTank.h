@@ -37,11 +37,13 @@ public:
 
 		//naciateni obrazku na objekt
 		Load("images/PlayerTank_64x77.png");
-
+		//testovanie 
 		assert(IsLoaded());//kontrola
+
 
 		setVelocity(0);
 		setMaxVelocity(600.0f);
+		// dolezite pre dalsie operacie nastavanie stredu objektu
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);
 		
 		spawn((1024 / 2) - 45, 700);//nastav hraca dole v strede

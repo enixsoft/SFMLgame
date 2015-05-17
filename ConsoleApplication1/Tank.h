@@ -3,7 +3,7 @@
 #include "VisibleGameObject.h"
 #include <Windows.h>
 
-
+//typ tanku
 enum TANK_TYPE{
 	PLAYER,LIGHT, MEDIUM, HEAVY
 };
@@ -11,11 +11,11 @@ enum TANK_TYPE{
 class Tank :public VisibleGameObject{//abst class
 private:
 	float _maxVelocity;
-	float _velocity;  // -- left ++ right
+	float _velocity;  // -- vlavo ++ vpravo
 
 	int ammo;//-1 unlimited ammo
 	TANK_TYPE tankType;
-	int rateOfFire;//ako rychlo tank striela// v pixeloch .. pracuje s poziciou tanku kolk osa pohol etc
+	int rateOfFire;//ako rychlo tank striela// v pixeloch .. pracuje s poziciou tanku kolk osa pohol etc//neni pouzite
 	int health;//rozne tanky maju viac zivota ako druhe
 
 	//static int idCiel;//vrch id generovane
@@ -43,15 +43,7 @@ public:
 			ammo -= 1;
 			return new Projectile(Point(GetPosition().x, GetPosition().y), DIRECTION_NORTH);
 			
-			//mainApp.getGame().getGameObjectManager().Add(projectile);
-
-			//(projectile);
-			//create projectile and emmit from location
-			//TODO create PROJECTILE OBJECT
-			//GetSprite().getPosition().x
-			//return projectile;
-	//	}
-	//	return NULL;
+		
 	}
 	void destroyed();//moze sa menit obrazok a dat navedomie ze sa znicil tank
 

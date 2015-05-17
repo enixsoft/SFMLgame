@@ -40,7 +40,7 @@ public:
 			GetSprite().move(0, (GetVelocity()*elapsedTime));
 		}
 		else{
-			//delete this;//nesom si isty
+			//delete 
 		}
 	}
 

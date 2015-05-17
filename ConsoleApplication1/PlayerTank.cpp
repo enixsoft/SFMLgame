@@ -8,20 +8,10 @@ PlayerTank::PlayerTank()
 
 }
 
-
-//PlayerTank::~PlayerTank()
-//{
-//}
-
-
-
-
+//metoda ktora spravuje funkciu pohybu
 void PlayerTank::Update(float elapsedTime)
 {
-	
-	//input
-	
-
+	//input hraca 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		setVelocity(GetVelocity()-3.0f);
@@ -35,28 +25,21 @@ void PlayerTank::Update(float elapsedTime)
 	{
 		setVelocity(0.0f);
 	}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	//{
-	//	shoot();//shoot projectile//spawned ones shoot in random interval in range of random numbers
-	//}
-	//
-
-
-
+	//rychlost pohybu
 	if (GetVelocity() > getMaxVelocity()){
 		setVelocity(getMaxVelocity());
 	}if (GetVelocity() < -getMaxVelocity()){
 		setVelocity(-getMaxVelocity());
 	}
-
+	
 	sf::Vector2f pos = this->GetPosition();
-
+	//pozera na okraje 
 	if (pos.x  < GetSprite().getLocalBounds().height / 2
 		|| pos.x >(Game::SCREEN_WIDTH - GetSprite().getLocalBounds().width / 2))
 	{
-		setVelocity(-GetVelocity()); // Bounce by current velocity in opposite direction
+		setVelocity(-GetVelocity()); //odrazi sa rychlostout v protismere
 		
 	}
-
+	//pohnutie spritu/hraca
 	GetSprite().move(GetVelocity() * elapsedTime, 0);
 }
