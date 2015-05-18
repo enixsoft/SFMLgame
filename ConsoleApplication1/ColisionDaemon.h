@@ -12,12 +12,12 @@ namespace explosionAnimation{
 		//todo create thread
 		try{
 			//vgo.Load("images/explosion1_45x40.png");
-			//Sleep(1000);
+			//Sleep(100);
 			//vgo.Load("images/explosion_2_56x56.png");
-			//Sleep(1000);
-			vgo.Load("images/explosion3_72x66.png");
-			Sleep(1000);
-		    objectManager.Remove(std::to_string(j));
+			//Sleep(100);
+			//vgo.Load("images/explosion3_72x66.png");
+			//Sleep(100);
+		   // objectManager.Remove(std::to_string(j));
 		}
 		catch (...){
 			OutputDebugStringA("thread interrupt\n");
@@ -31,10 +31,9 @@ namespace colisionFunctions{
 
 	using namespace explosionAnimation;
 
-	void projectileTankColisionTask(GameObjectManager &objectManager){
+	void projectileTankColisionTask(GameObjectManager &objectManager,PlayerTank& player){
 		//Nekonecny loop
 		while (true){
-			OutputDebugStringA("threaaaad\n");
 			//spanie threadu 50 milisekund
 			try{
 				Sleep(20);
@@ -54,12 +53,16 @@ namespace colisionFunctions{
 
 							
 							if (sf::Rect<int>(projektil->GetPosition().x, projektil->GetPosition().y, 16, 16).intersects(sf::Rect<int>(vgoTank->GetPosition().x, vgoTank->GetPosition().y, 67, 77))){
-								OutputDebugStringA("TRAFENY");
+								
 
-								std::thread thread2(runAnimationExplode, std::ref(*vgoTank), std::ref(objectManager),j);
-								thread2.detach();
+								//std::thread thread2(runAnimationExplode, std::ref(*vgoTank), std::ref(objectManager),j);
+								//thread2.detach();
 								//vgoTank->Load("images/explosion3_72x66.png");
-								//objectManager.Remove(std::to_string(j));
+
+								if (j!=0){//lebo ine nespravnujeme .. nebol cas
+									player.increaseScore(TANK_LIGHT);
+								}
+								objectManager.Remove(std::to_string(j));
 								//vgoTank->SetPosition(100, 100);
 							}
 						}
@@ -91,12 +94,12 @@ public:
 	}
 	~ColisionDaemon(){
 	}
-	ColisionDaemon(GameObjectManager &objectManager){
+	ColisionDaemon(GameObjectManager &objectManager,PlayerTank& player){
 		/*Vytvorenie 2 threadov jeden pre checkovanie kolizie projektil tank druhy pre tank s tank*/
 
 			//try catch block asi bude potrebny ak thread interupted
 			//Pouzivanie ref()  aby mohol thread menit objekt
-			std::thread thread1(projectileTankColisionTask, std::ref(objectManager));
+		std::thread thread1(projectileTankColisionTask, std::ref(objectManager), std::ref(player));
 			/*Thread detachnuty od main threadu*/
 			thread1.detach();
 			

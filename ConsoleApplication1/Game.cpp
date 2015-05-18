@@ -81,7 +81,8 @@ void Game::Start(void)
 		  //sprav thread ktory bude robit strielat tanky
 	  }
 
-	  ColisionDaemon cd(_gameObjectManager);////////////////////////////////////////////////////////
+	  ColisionDaemon cd(_gameObjectManager,*player);////////////////////////////////////////////////////////
+
 
 	  /*Zmena stavu na ukazuje splash screen*/
 	   _gameState = Game::ShowingSplash;
@@ -105,7 +106,7 @@ bool Game::IsExiting()
 }
 /*Vykonava sa nanstop*/
 void Game::GameLoop(){
-
+	
 	/*Zobranie event poolu z okna hry*/
 	sf::Event currentEvent;
 	_mainWindow.pollEvent(currentEvent);
@@ -125,7 +126,7 @@ void Game::GameLoop(){
 		case Game::Playing:
 		{
 			/*Vykonavanie akcii na zaklade eventov*/
-
+			_mainWindow.setTitle("Tanky  SCORE:"+to_string(player->getScore()));
 				_mainWindow.clear(sf::Color(0, 0, 0));
 
 				_gameObjectManager.UpdateAll();
@@ -158,7 +159,7 @@ void Game::GameLoop(){
 					VisibleGameObject* t = _gameObjectManager.Get(std::to_string(i));
 					/*Strielaj v nahodnom intrevale - strelba pre spawnute nepriatelske tanky nachadzajuce sa v objekt managery*/
 					if (t){
-						if (!(rand() % 20000)){
+						if (!(rand() % 2000)){
 							/*Vytvorenie projektilu a vsunutie ho do objekt manageru*/
 							Projectile *pp =new Projectile(Point(t->GetPosition().x, t->GetPosition().y), DIRECTION_SOUTH);
 							_gameObjectManager.Add(pp);

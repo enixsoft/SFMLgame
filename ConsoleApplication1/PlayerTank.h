@@ -55,7 +55,9 @@ public:
 
 	//zvysenie skora / moze byt aj negativnou hodnotou pokial hrac umre a neprejde level alebo take nieco
 	void increaseScore(int score);
-	void increaseScore(SCORE_VALUES score);
+	void increaseScore(SCORE_VALUES score){
+		this->score = this->score+score;
+	}
 
 
 
