@@ -25,10 +25,10 @@ public:
 		GetSprite().setOrigin(GetSprite().getLocalBounds().width / 2, GetSprite().getLocalBounds().height / 2);
 		//pokial sever tak posunut bod z ktoreho projektil bude spawnuty o polovicu vysky tanku hore
 		if (emmitDirection == DIRECTION_NORTH){
-			spawn(spawnPoint.getX(), spawnPoint.getY() - 38.5, emmitDirection);
+			spawn(spawnPoint.getX(), spawnPoint.getY() - 100, emmitDirection);
 		}
 		else{
-			spawn(spawnPoint.getX(), spawnPoint.getY() + 38.5, emmitDirection);
+			spawn(spawnPoint.getX(), spawnPoint.getY() + 100, emmitDirection);
 		}
 		
 

@@ -4,12 +4,54 @@
 #include "MainMenu.h"
 #include "PlayerTank.h"
 #include <random>
+#include <iostream>
+#include <fstream>
+#include "ColisionDaemon.h"
+
+using namespace std;
+
 
 /*Objekt hraca*/
 PlayerTank *player;
 
 
-//ColisionDaemon cd;//dojebane includy zase
+
+
+
+
+
+
+void writeToFile(string fileName) {
+	ofstream myfile(fileName);
+	if (myfile.is_open()){
+		myfile << "This is a line.\n";
+		myfile << "This is another line.\n";
+		myfile.close();
+	}
+	else{
+		cout << "Unable to open file";
+	}
+
+}
+
+
+
+string readFromFile() {
+	string line;
+	ifstream myfile("example.txt");
+	if (myfile.is_open()){
+		while (getline(myfile, line)){
+			cout << line << '\n';
+		}
+		myfile.close();
+	}
+
+	else {
+		cout << "Unable to open file";
+	}
+	return NULL;
+}
+
 
 
 /*Metoda ktora riadi chod hry*/
@@ -24,6 +66,8 @@ void Game::Start(void)
 	/*Vytvorenie okna ktore ma za moznost byt zatvorene a fixnute parametre*/
 	_mainWindow.create(sf::VideoMode(1024, 768, 32), "Tanky!", sf::Style::Close);
 
+	//_mainWindow.setFramerateLimit(60);
+
 	
 
 	//Inicializacia hraca
@@ -36,6 +80,8 @@ void Game::Start(void)
 		  _gameObjectManager.spawnEnemyTank(LIGHT);
 		  //sprav thread ktory bude robit strielat tanky
 	  }
+
+	  ColisionDaemon cd(_gameObjectManager);////////////////////////////////////////////////////////
 
 	  /*Zmena stavu na ukazuje splash screen*/
 	   _gameState = Game::ShowingSplash;
@@ -112,7 +158,7 @@ void Game::GameLoop(){
 					VisibleGameObject* t = _gameObjectManager.Get(std::to_string(i));
 					/*Strielaj v nahodnom intrevale - strelba pre spawnute nepriatelske tanky nachadzajuce sa v objekt managery*/
 					if (t){
-						if (!(rand() % 2000)){
+						if (!(rand() % 20000)){
 							/*Vytvorenie projektilu a vsunutie ho do objekt manageru*/
 							Projectile *pp =new Projectile(Point(t->GetPosition().x, t->GetPosition().y), DIRECTION_SOUTH);
 							_gameObjectManager.Add(pp);

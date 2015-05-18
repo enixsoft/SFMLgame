@@ -87,7 +87,6 @@
     <ClInclude Include="ColisionDaemon.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjectManager.h" />
-    <ClInclude Include="GameUtils.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PlayerTank.h" />
@@ -101,7 +100,6 @@
     <ClInclude Include="VisibleGameObject.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="MainApp.cpp" />

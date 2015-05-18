@@ -36,7 +36,7 @@ public:
 		setStreak(streak);
 
 		//naciateni obrazku na objekt
-		Load("images/PlayerTank_64x77.png");
+		Load("images/PlayerTank_67x77.png");
 		//testovanie 
 		assert(IsLoaded());//kontrola
 

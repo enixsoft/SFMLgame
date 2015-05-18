@@ -5,6 +5,7 @@
 #include <random>
 #include "Windows.h"
 
+
 class GameObjectManager
 {
 public:
@@ -22,8 +23,7 @@ public:
 	void GameObjectManager::UpdateAll();
 
 
-	//spawn(GetSprite().getScale().x / 2, GetSprite().getScale().x / 2);
-	//	GetSprite().setOrigin(x,z);//spawn dole v strede
+	
 	void spawnEnemyTank(TANK_TYPE tankType){
 
 		Point freeLoc = spawnLocations[getFreeLocation()];
